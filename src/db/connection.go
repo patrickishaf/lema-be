@@ -22,4 +22,13 @@ func InitializeDb() {
 	if dbError != nil {
 		log.Println("failed to migrate database", dbError)
 	}
+
+	insertError := insertDummyUsers()
+	if insertError != nil {
+		log.Println("failed to indsert dummy users", insertError)
+	}
+}
+
+func getDB() *gorm.DB {
+	return db
 }

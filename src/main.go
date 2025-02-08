@@ -1,9 +1,21 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/patrickishaf/lema-be/src/db"
+	"github.com/patrickishaf/lema-be/src/handlers"
 )
 
 func main() {
 	db.InitializeDb()
+
+	router := gin.Default()
+	router.GET("/users", handlers.GetUsers)
+	router.GET("/user/count", handlers.GetUserCount)
+	router.GET("/user/:id", handlers.GetUserById)
+
+	err := router.Run(":8080")
+	if err != nil {
+		panic(err)
+	}
 }
