@@ -6,6 +6,7 @@ import (
 	"github.com/patrickishaf/lema-be/src/handlers"
 )
 
+// TODO: Print the value of c.Query and see if it is a map or struct that you can validate
 func main() {
 	db.InitializeDb()
 
