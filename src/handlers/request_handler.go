@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/patrickishaf/lema-be/src/common"
 	"github.com/patrickishaf/lema-be/src/db"
 )
 
@@ -15,21 +16,21 @@ func GetUsers(c *gin.Context) {
 	offset := pageNumber * pageSize
 	users := db.FindUsers(pageSize, offset)
 
-	c.IndentedJSON(http.StatusOK, map[string]any{
-		"pageNumber": pageNumber,
-		"pageSize":   pageSize,
-		"data":       users,
-	})
+	c.IndentedJSON(http.StatusOK, users)
 }
 
 func GetUserCount(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "get user count",
-	})
+	numberOfusers := db.FindUserCount()
+	c.IndentedJSON(http.StatusOK, numberOfusers)
 }
 
 func GetUserById(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "get user by id",
-	})
+	userID, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, common.CreateErrorResponse("invalid id param"))
+		return
+	}
+
+	existingUser := db.FindUserById(uint(userID))
+	c.IndentedJSON(http.StatusOK, existingUser)
 }

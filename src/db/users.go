@@ -14,8 +14,10 @@ func FindUserCount() int64 {
 	return count
 }
 
-func FindUserById(id int) models.User {
-	return models.User{}
+func FindUserById(id uint) models.User {
+	var user models.User
+	db.Where(&models.User{ID: id}).First(&user)
+	return user
 }
 
 func insertDummyUsers() error {

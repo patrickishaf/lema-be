@@ -11,8 +11,8 @@ func main() {
 
 	router := gin.Default()
 	router.GET("/users", handlers.GetUsers)
-	router.GET("/user/count", handlers.GetUserCount)
-	router.GET("/user/:id", handlers.GetUserById)
+	router.GET("/users/count", handlers.GetUserCount)
+	router.GET("/users/:id", handlers.GetUserById)
 
 	err := router.Run(":8080")
 	if err != nil {

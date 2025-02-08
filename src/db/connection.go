@@ -11,7 +11,7 @@ import (
 var db *gorm.DB
 
 func InitializeDb() {
-	database, err := gorm.Open(sqlite.Open("main.db"), &gorm.Config{})
+	database, err := gorm.Open(sqlite.Open("../main.sqlite3"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect to db")
 	}
@@ -23,10 +23,10 @@ func InitializeDb() {
 		log.Println("failed to migrate database", dbError)
 	}
 
-	insertError := insertDummyUsers()
-	if insertError != nil {
-		log.Println("failed to indsert dummy users", insertError)
-	}
+	// insertError := insertDummyUsers()
+	// if insertError != nil {
+	// 	log.Println("failed to indsert dummy users", insertError)
+	// }
 }
 
 func getDB() *gorm.DB {
