@@ -17,7 +17,7 @@ func InitializeDb() {
 	}
 
 	db = database
-	dbError := db.AutoMigrate(&models.Post{})
+	dbError := db.AutoMigrate(&models.Post{}, &models.User{})
 
 	if dbError != nil {
 		log.Println("failed to migrate database", dbError)
