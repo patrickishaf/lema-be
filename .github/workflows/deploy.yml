@@ -1,0 +1,21 @@
+name: Deploy To VM
+
+on:
+  pull_request:
+    branches:
+      - development
+  push:
+    branches:
+      - main
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.20'
