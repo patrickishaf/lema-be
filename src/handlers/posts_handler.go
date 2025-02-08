@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/patrickishaf/lema-be/src/common"
 	"github.com/patrickishaf/lema-be/src/db"
+	dtos "github.com/patrickishaf/lema-be/src/dto"
+	"github.com/patrickishaf/lema-be/src/models"
 )
 
 func getPostsByUserId(c *gin.Context) {
@@ -21,7 +23,33 @@ func getPostsByUserId(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, posts)
 }
 
-func createPost(c *gin.Context) {}
+func createPost(c *gin.Context) {
+	var reqBody dtos.CreatePostReqBody
+
+	err := c.ShouldBindJSON(&reqBody)
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, "invalid request body")
+		return
+	}
+
+	errors := common.ValidateStruct(reqBody)
+	if errors != nil {
+		c.IndentedJSON(http.StatusBadRequest, errors)
+		return
+	}
+
+	newPost, err := db.InsertPost(&models.Post{
+		AuthorId: reqBody.AuthorId,
+		Title:    reqBody.Title,
+		Body:     reqBody.Body,
+	})
+	if err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, err)
+		return
+	}
+
+	c.IndentedJSON(http.StatusCreated, newPost)
+}
 
 func deletePost(c *gin.Context) {
 	postId, err := strconv.Atoi(c.Param("id"))

@@ -14,7 +14,19 @@ func FindPostsByUser(userId uint) []models.Post {
 	return posts
 }
 
-func InsertPost(post *models.Post) {}
+func InsertPost(post *models.Post) (models.Post, error) {
+	result := getDB().Create(&post)
+	if result.Error != nil {
+		return models.Post{}, result.Error
+	}
+
+	return models.Post{
+		ID:       post.ID,
+		AuthorId: post.AuthorId,
+		Title:    post.Title,
+		Body:     post.Body,
+	}, nil
+}
 
 func DeletePost(id uint) {
 	getDB().Delete(&models.Post{}, id)
