@@ -4,9 +4,9 @@ import "time"
 
 type Post struct {
 	ID        uint `gorm:"primaryKey"`
-	authorId  uint `gorm:"foreignKey:Users"`
-	title     string
-	body      string
-	createdAt time.Time `gorm:"autoCreateTime"`
-	UpdatedAt time.Time `gorm:"autoUpdateTime"`
+	AuthorId  uint `gorm:"foreignKey:Users"`
+	Title     string
+	Body      string
+	CreatedAt time.Time `gorm:"autoCreateTime"`
+	CpdatedAt time.Time `gorm:"autoUpdateTime"`
 }

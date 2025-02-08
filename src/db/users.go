@@ -48,7 +48,7 @@ func insertDummyUsers() error {
 		},
 	}
 
-	result := db.Create(&users)
+	result := getDB().Create(&users)
 	if result.Error != nil {
 		return result.Error
 	}

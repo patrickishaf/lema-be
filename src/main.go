@@ -13,6 +13,7 @@ func main() {
 	router.GET("/users", handlers.GetUsers)
 	router.GET("/users/count", handlers.GetUserCount)
 	router.GET("/users/:id", handlers.GetUserById)
+	handlers.RegisterPostHandlers(router)
 
 	err := router.Run(":8080")
 	if err != nil {

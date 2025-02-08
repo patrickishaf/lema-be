@@ -27,6 +27,10 @@ func InitializeDb() {
 	// if insertError != nil {
 	// 	log.Println("failed to indsert dummy users", insertError)
 	// }
+	// insertError := insertDummyPosts()
+	// if insertError != nil {
+	// 	log.Println("failed to indsert dummy posts", insertError)
+	// }
 }
 
 func getDB() *gorm.DB {
