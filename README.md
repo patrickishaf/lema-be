@@ -1,5 +1,5 @@
 # Users-Posts Backend
-This is the backend server for the Web Developer Assignment, built with Node.js, TypeScript, Express.js, and SQLite3.
+This is the backend server for the Web Developer Assignment, built with Go, Gin and SQLite3.
 
 ## Prerequisites
 - Go
