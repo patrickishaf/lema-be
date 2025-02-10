@@ -20,9 +20,7 @@ func main() {
 		AllowCredentials: true,
 		MaxAge:           12 * 60 * 60,
 	}))
-	router.GET("/users", handlers.GetUsers)
-	router.GET("/users/count", handlers.GetUserCount)
-	router.GET("/users/:id", handlers.GetUserById)
+	handlers.RegisterUserHandlers(router)
 	handlers.RegisterPostHandlers(router)
 
 	err := router.Run(":8080")

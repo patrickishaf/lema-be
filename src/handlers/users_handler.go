@@ -10,7 +10,7 @@ import (
 	"github.com/patrickishaf/lema-be/src/db"
 )
 
-func GetUsers(c *gin.Context) {
+func getUsers(c *gin.Context) {
 	pageNumber, _ := strconv.Atoi(c.DefaultQuery("pageNumber", "0"))
 	pageSize, _ := strconv.Atoi(c.DefaultQuery("pageSize", "10"))
 
@@ -27,12 +27,12 @@ func GetUsers(c *gin.Context) {
 	})
 }
 
-func GetUserCount(c *gin.Context) {
+func getUserCount(c *gin.Context) {
 	numberOfusers := db.FindUserCount()
 	c.IndentedJSON(http.StatusOK, numberOfusers)
 }
 
-func GetUserById(c *gin.Context) {
+func getUserById(c *gin.Context) {
 	userID, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		c.IndentedJSON(http.StatusBadRequest, common.CreateErrorResponse("invalid id param"))
@@ -41,4 +41,10 @@ func GetUserById(c *gin.Context) {
 
 	existingUser := db.FindUserById(uint(userID))
 	c.IndentedJSON(http.StatusOK, existingUser)
+}
+
+func RegisterUserHandlers(router *gin.Engine) {
+	router.GET("/users", getUsers)
+	router.GET("/users/count", getUserCount)
+	router.GET("/users/:id", getUserById)
 }
