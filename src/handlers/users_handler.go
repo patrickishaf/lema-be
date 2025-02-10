@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"math"
 	"net/http"
 	"strconv"
 
@@ -15,8 +16,15 @@ func GetUsers(c *gin.Context) {
 
 	offset := pageNumber * pageSize
 	users := db.FindUsers(pageSize, offset)
+	count := db.FindUserCount()
+	totalPages := math.Ceil(float64(count) / float64(pageSize))
 
-	c.IndentedJSON(http.StatusOK, users)
+	c.IndentedJSON(http.StatusOK, map[string]any{
+		"pageNumber": pageNumber,
+		"pageSize":   pageSize,
+		"totalPages": totalPages,
+		"data":       users,
+	})
 }
 
 func GetUserCount(c *gin.Context) {
