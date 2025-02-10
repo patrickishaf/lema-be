@@ -16,13 +16,10 @@ lema-be/
     └── workflows/                  
         └── deploy.yml              # Workflow File for deploying to EC2 instance
 ├── common                          # Utilities used across mutiple modules
-├── knexfile.ts                     # Knex configuration file
-├── package.json                    # Project metadata and dependencies
-├── README.md                       # Project overview and setup instructions
-├── tsconfig.json                   # Typescript compiler configuration
-└── src/
-    └── common/                     # Members used in multiple modules
-        └── env.ts                  # Utilities for loading and configuring environment variables
+├── db                              # database setup logic and useful db interfaces
+├── handlers                        # members for handling http requests
+├── models                          # Struct definitions for app models
+└── validation/                     # Logic and utilities for data validation
 ```
 
 ## Installation
