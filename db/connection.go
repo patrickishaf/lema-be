@@ -3,7 +3,7 @@ package db
 import (
 	"log"
 
-	"github.com/patrickishaf/lema-be/src/models"
+	"github.com/patrickishaf/lema-be/models"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )

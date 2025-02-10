@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/patrickishaf/lema-be/src/db"
-	"github.com/patrickishaf/lema-be/src/handlers"
+	"github.com/patrickishaf/lema-be/db"
+	"github.com/patrickishaf/lema-be/handlers"
 )
 
 // TODO: Print the value of c.Query and see if it is a map or struct that you can validate

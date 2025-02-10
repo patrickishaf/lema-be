@@ -6,10 +6,10 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/patrickishaf/lema-be/src/common"
-	"github.com/patrickishaf/lema-be/src/db"
-	dtos "github.com/patrickishaf/lema-be/src/dto"
-	"github.com/patrickishaf/lema-be/src/models"
+	"github.com/patrickishaf/lema-be/common"
+	"github.com/patrickishaf/lema-be/db"
+	dtos "github.com/patrickishaf/lema-be/dto"
+	"github.com/patrickishaf/lema-be/models"
 )
 
 func getPostsByUserId(c *gin.Context) {

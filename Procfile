@@ -1,1 +1,1 @@
-web: go run ./src/main.go && ./main
+web: go run ./main.go && ./main

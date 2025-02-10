@@ -1,6 +1,6 @@
 package db
 
-import "github.com/patrickishaf/lema-be/src/models"
+import "github.com/patrickishaf/lema-be/models"
 
 func FindPostById(id uint) models.Post {
 	var post models.Post

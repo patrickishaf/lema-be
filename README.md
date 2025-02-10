@@ -16,7 +16,7 @@ go mod tidy
 2. Build the project:
 
 ```bash
-go build ./src/main.go
+go build ./main.go
 ```
 This will compile the go project into an executable named main.
 
