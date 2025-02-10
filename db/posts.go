@@ -10,7 +10,7 @@ func FindPostById(id uint) models.Post {
 
 func FindPostsByUser(userId uint) []models.Post {
 	var posts []models.Post
-	getDB().Where(&models.Post{AuthorId: userId}).Find(&posts)
+	getDB().Where(&models.Post{AuthorId: userId}).Find(&posts).Order("id DESC")
 	return posts
 }
 

@@ -20,7 +20,7 @@ func getPostsByUserId(c *gin.Context) {
 	}
 
 	posts := db.FindPostsByUser(uint(userId))
-	c.IndentedJSON(http.StatusOK, posts)
+	c.IndentedJSON(http.StatusOK, models.ReversePosts(posts))
 }
 
 func createPost(c *gin.Context) {
